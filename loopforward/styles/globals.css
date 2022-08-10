@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .imageEdge {
+    box-shadow: 0 0 12px 12px white inset;
+    z-index: 10;
+  }
+}

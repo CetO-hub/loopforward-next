@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import HeroSection from "../src/components/HeroSection";
 import Navbar from "../src/components/Navbar";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
+      <HeroSection />
     </div>
   );
 }
