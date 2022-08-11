@@ -1,24 +1,35 @@
 import Image from "next/image";
 import React from "react";
 import easy from "../assets/img/easy.svg";
-import paper from "../assets/img/paper.png";
 import TextAnimation from "./TextAnimation";
 
 const HeroSection = () => {
   return (
     <>
-      <div className="relative">
-        <div className="w-full h-[calc(100vh-100px)]  md:h-[calc(100vh-150px)] flex justify-between md:justify-center gap-8 md:gap-40 items-center relative px-4 py-2 my-auto">
-          <p className="max-w-prose w-[65%] md:w-[35%] text-3xl md:text-5xl md:leading-loose">
-            <TextAnimation />{" "}
-            <span className="">dir deine Welt, wie sie dir leicht</span>
-            <span className="text-fuchsia-500">[</span>ge
-            <span className="text-fuchsia-500">]</span>
-            fällt.
+      <div className="">
+        <div className="w-full flex flex-col justify-center     md:justify-center relative px-4 py-10 my-16 md:mt-36 font-bold">
+          <p className="  text-3xl md:text-5xl leading-loose md:leading-loose flex flex-col items-center justify-center tracking-widest">
+            <p className="typewriter1 lg:typewriter2 max-w-max text-4xl md:text-7xl ">
+              KREIERE...
+            </p>
+            <div className="leading-normal flex flex-col items-center mt-14 mb-5">
+              <p className="font-mono">dir deine Welt, </p>
+              <p className="font-mono">wie sie dir </p>
+            </div>
+            <p>
+              leicht<span className="text-fuchsia-500">[ge]</span>
+              <TextAnimation />
+            </p>
           </p>
-          <div className="w-[40%] md:w-[20%]">
-            <Image src={easy} alt="hero-image" height={800} />
-          </div>
+        </div>
+        <div className="relative mx-auto flex flex=col items-center justify-center w-[300px] h-[300px] md:w-[500px] md:h-[500px] lg:w-[700px] lg:h-[700px]">
+          <Image
+            layout="fill"
+            src={easy}
+            alt="hero-image"
+            width={300}
+            height={300}
+          />
         </div>
       </div>
     </>

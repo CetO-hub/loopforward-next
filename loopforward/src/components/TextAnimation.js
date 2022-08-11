@@ -1,11 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 
 const TextAnimation = () => {
-  const isCharArray = ["K", "R", "I", "E", "R", "E"];
+  const createArray = "create".split("");
+  const reactArray = "react".split("");
+  const [array, setArray] = useState(reactArray);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (count === 0) {
+        setArray(createArray);
+        setCount(1);
+      } else {
+        setArray(reactArray);
+        setCount(0);
+      }
+    }, 6000);
+    return () => clearInterval(interval);
+  }, [array]);
+
   return (
-    <span className="text-fuchsia-500 text-5xl md:text-7xl -">
-      {isCharArray}
-    </span>
+    <>
+      <span className="fade">
+        {array.map((item, index) => (
+          <span key={index}>{item}</span>
+        ))}
+      </span>
+    </>
   );
 };
 
