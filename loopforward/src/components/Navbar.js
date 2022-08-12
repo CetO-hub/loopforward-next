@@ -4,10 +4,15 @@ import logo from "../assets/img/LoopForward..svg";
 import { RiMenu3Line, RiLinkedinLine } from "react-icons/ri";
 import { AiOutlineClose, AiOutlineInstagram } from "react-icons/ai";
 import { IconContext } from "react-icons";
+import { animated, useSpring } from "react-spring";
 
 const Navbar = () => {
   const [scroll, setScroll] = useState(false);
   const [toggleNav, setToggleNav] = useState(false);
+
+  const mobileBar = useSpring({
+    transform: toggleNav ? `translate3d(0,0%,0)` : `translate3d(0,-100%,0)`,
+  });
 
   useEffect(() => {
     const handleNavShadow = () => {
@@ -20,21 +25,9 @@ const Navbar = () => {
     window.addEventListener("scroll", handleNavShadow);
   }, []);
 
-  const handleToggleNav = () => {
-    if (!toggleNav) {
-      setToggleNav(true);
-    } else {
-      setToggleNav(false);
-    }
-  };
-
   return (
     <>
-      <div
-        className={
-          toggleNav ? "hidden" : "fixed top-0 left-0 right-0 bg-white z-[102]"
-        }
-      >
+      <div className="fixed top-0 left-0 right-0 bg-white z-[102]">
         <div
           className={
             scroll
@@ -47,7 +40,7 @@ const Navbar = () => {
           </div>
           <IconContext.Provider value={{ size: "30px" }}>
             <RiMenu3Line
-              onClick={handleToggleNav}
+              onClick={() => setToggleNav(!toggleNav)}
               className={toggleNav ? "hidden" : "block md:hidden"}
             />
           </IconContext.Provider>
@@ -76,12 +69,9 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div
-        className={
-          toggleNav
-            ? "fixed top-0 left-0 w-[45%] h-screen px-4 py-2 bg-white z-[101]"
-            : "hidden"
-        }
+      <animated.div
+        className="fixed top-0 left-0 w-[45%] h-screen px-4 py-2 bg-white z-[104]"
+        style={mobileBar}
       >
         <div className=" flex item-center">
           <Image src={logo} alt="logo" />
@@ -122,23 +112,17 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-      </div>
-
-      <div
-        className={
-          toggleNav
-            ? "bg-black/80 w-full h-screen z-[100] fixed top-0 left-0"
-            : "hidden"
-        }
+      </animated.div>
+      <animated.div
+        style={mobileBar}
+        className="bg-black/80 w-full h-screen z-[103] fixed top-0 left-0"
       >
         <AiOutlineClose
           size="40px"
-          onClick={handleToggleNav}
-          className={
-            "color-red-500 z-[102] fixed top-5 right-5 py-2 px-2 bg-white rounded-full hover:scale-110"
-          }
+          onClick={() => setToggleNav(!toggleNav)}
+          className="color-red-500 z-[104] fixed top-5 right-5 py-2 px-2 bg-white rounded-full hover:scale-110"
         />
-      </div>
+      </animated.div>
     </>
   );
 };

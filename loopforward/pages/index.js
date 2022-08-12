@@ -1,8 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
 import HeroSection from "../src/components/HeroSection";
+import { animated } from "react-spring";
 
 import Navbar from "../src/components/Navbar";
+import About from "../src/components/About";
+import Services from "../src/components/Services";
 
 export default function Home() {
   return (
@@ -14,6 +17,8 @@ export default function Home() {
       </Head>
       <Navbar />
       <HeroSection />
+      <About />
+      <Services />
     </div>
   );
 }

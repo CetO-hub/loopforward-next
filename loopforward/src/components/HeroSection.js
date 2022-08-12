@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from "react";
 import easy from "../assets/img/easy.svg";
-import TextAnimation from "./TextAnimation";
 
 const HeroSection = () => {
   return (
@@ -17,19 +16,12 @@ const HeroSection = () => {
               <p className="font-mono">wie sie dir </p>
             </div>
             <p>
-              leicht<span className="text-fuchsia-500">[ge]</span>
-              <TextAnimation />
+              leicht<span className="text-fuchsia-500">[ge]</span>fällt
             </p>
           </p>
         </div>
         <div className="relative mx-auto flex flex=col items-center justify-center w-[300px] h-[300px] md:w-[500px] md:h-[500px] lg:w-[700px] lg:h-[700px]">
-          <Image
-            layout="fill"
-            src={easy}
-            alt="hero-image"
-            width={300}
-            height={300}
-          />
+          <Image layout="fill" src={easy} alt="hero-image" />
         </div>
       </div>
     </>
